@@ -13,13 +13,12 @@ pipeline{
         stage('Build'){
             steps{
                 sh "mvn clean package"
-                sh "echo ${DOCKER_TAG}"
-                sh "docker build . -t devopsforyou94/Helloapp:${DOCKER_TAG} "
+                sh "docker build . -t devopsforyou94/helloapp:${DOCKER_TAG} "
                 withCredentials([string(credentialsId: '3168735c-0100-4554-806f-3ef1e6b3e3a6', variable: 'dockerHubPwd')]) {
                     sh "docker login -u devopsforyou94 -p ${dockerHubPwd}"
                 }
                 
-                sh "docker push devopsforyou94/Helloapp:${DOCKER_TAG} "
+                sh "docker push devopsforyou94/helloapp:${DOCKER_TAG} "
             }
         }
         
