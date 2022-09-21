@@ -6,8 +6,7 @@ pipeline{
     stages{
         stage('init'){
             steps{
-                git credentialsId: '55efbada-74ac-44e5-99af-b7b304b4baee', 
-                    url: 'https://github.com/devops4all77/jenkinsansibledemo1.git'
+                Checkout SCM
             }
         }
         
