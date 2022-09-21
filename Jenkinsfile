@@ -14,7 +14,7 @@ pipeline{
             steps{
                 sh "mvn clean package"
                 sh "sudo docker build . -t devopsforyou94/helloapp:${DOCKER_TAG} "
-               withCredentials([usernamePassword(credentialsId: '3168735c-0100-4554-806f-3ef1e6b3e3a6', passwordVariable: 'Docker_pwd', usernameVariable: 'Docker_user')]) {
+               withCredentials([usernamePassword(credentialsId: 'dockercrd', passwordVariable: 'Docker_pwd', usernameVariable: 'Docker_user')]) {
                     sh "sudo docker login -u devopsforyou94  -p ${Docker_pwd}"
                 }
                 
