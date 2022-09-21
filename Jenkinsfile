@@ -18,7 +18,7 @@ pipeline{
                     sh "sudo docker login -u devopsforyou94  -p ${Docker_pwd}"
                 }
                 
-                sh "docker push devopsforyou94/helloapp:${DOCKER_TAG} "
+                sh "sudo docker push devopsforyou94/helloapp:${DOCKER_TAG} "
             }
         }
         
