@@ -1,10 +1,5 @@
 - hosts: dev
-  become: True
+  become: true
   tasks:
-    - name: Start the container
-      docker_container:
-        name: helloapp
-        image: "devopsforyou94/helloapp:{{DOCKER_TAG}}"
-        state: started
-        published_ports:
-          - 0.0.0.0:8090:8090
+   - name: create docker image
+     shell: sudo docker run -d --name helloapp{{DOCKER_TAG}} -p 8090:8080 devopsforyou94/helloapp:{{DOCKER_TAG}}
