@@ -1,5 +1,6 @@
-hosts: dev
-become: true
-tasks:
-  - name: create docker image
-    shell: docker run -d --name helloapp:{{DOCKER_TAG}} -p 8090:8080 devopsforyou/helloapp:{{DOCKER_TAG}}
+
+- hosts: dev
+  become: true
+  tasks:
+   - name: create docker image
+     shell: docker run -d --name helloapp:{{DOCKER_TAG}} -p 8090:8080 devopsforyou/helloapp:{{DOCKER_TAG}}
