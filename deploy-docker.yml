@@ -1,6 +1,7 @@
 - hosts: dev
   become: true
   tasks:
-   - name: killing old container and deploying latest docker image
-     shell: docker kill $(docker ps -a|grep "helloapp"|awk {'print $1'}) && docker rm $(docker ps -a|grep "nginx"|awk {'print $1'}) 
+   - name: killing old container 
+     shell: docker kill $(docker ps -a|grep "helloapp"|awk {'print $1'}) && docker rm $(docker ps -a|grep "helloapp"|awk {'print $1'}) 
+   - name: deploying latest docker image
      shell: sudo docker run -d --name helloapp{{DOCKER_TAG}} -p 8090:8080 devopsforyou94/helloapp:{{DOCKER_TAG}}
