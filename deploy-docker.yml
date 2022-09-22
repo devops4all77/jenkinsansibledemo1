@@ -2,6 +2,6 @@
   become: true
   tasks:
    - name: killing old container 
-     shell: docker kill $(docker ps -a|grep "helloapp"|awk {'print $1'}) && docker rm $(docker ps -a|grep "helloapp"|awk {'print $1'}) 
+     shell: sudo docker stop $(docker ps -a|grep "helloapp"|awk {'print $1'}) && sudo docker rm $(docker ps -a|grep "helloapp"|awk {'print $1'}) 
    - name: deploying latest docker image
      shell: sudo docker run -d --name helloapp{{DOCKER_TAG}} -p 8090:8080 devopsforyou94/helloapp:{{DOCKER_TAG}}
